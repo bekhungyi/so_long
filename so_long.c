@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/10 17:26:03 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/10 18:10:29 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,36 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
 	*(unsigned int*)dst = color;
+}
+
+void draw_circle(t_data *img, int x0, int y0, int radius, int color)
+{
+    int x = radius;
+    int y = 0;
+    int err = 0;
+
+    while (x >= y)
+    {
+        my_mlx_pixel_put(img, x0 + x, y0 + y, color);
+        my_mlx_pixel_put(img, x0 + y, y0 + x, color);
+        my_mlx_pixel_put(img, x0 - y, y0 + x, color);
+        my_mlx_pixel_put(img, x0 - x, y0 + y, color);
+        my_mlx_pixel_put(img, x0 - x, y0 - y, color);
+        my_mlx_pixel_put(img, x0 - y, y0 - x, color);
+        my_mlx_pixel_put(img, x0 + y, y0 - x, color);
+        my_mlx_pixel_put(img, x0 + x, y0 - y, color);
+
+        if (err <= 0)
+        {
+            y += 1;
+            err += 2*y + 1;
+        }
+        if (err > 0)
+        {
+            x -= 1;
+            err -= 2*x + 1;
+        }
+    }
 }
 
 void    horLine(t_data  img, int x, int y)
@@ -61,6 +91,13 @@ int	key_hook(int keycode, t_vars *vars)
     return (0);
 }
 
+int render_next_frame(int keycode, t_vars *data)
+{
+    if (keycode == 0)
+        data->win;
+    return (0);
+}
+
 int	main(void)
 {
 	void	    *mlx;
@@ -74,17 +111,19 @@ int	main(void)
 	img.img = mlx_new_image(mlx, 300, 300);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
     
-    x = 100;
-    y = 100;
-    while (x <= 200)
-    {
-        horLine(img, x, y);
-        x++;
-    }
+    x = 150;
+    y = 150;
+    draw_circle(&img, x, y, 25, 0x00FF0000);
+    // while (x <= 200)
+    // {
+    //     horLine(img, x, y);
+    //     x++;
+    // }
 	mlx_put_image_to_window(mlx, win, img.img, 0, 0);
     vars.mlx = mlx;
     vars.win = win;
     mlx_hook(vars.win, 2, 1L<<0, exitWindow, &vars);
     mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_loop(mlx);
+	mlx_loop_hook(mlx, render_next_frame, &vars);
+    mlx_loop(mlx);
 }
