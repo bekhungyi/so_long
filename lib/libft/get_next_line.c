@@ -6,11 +6,25 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 21:01:54 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/17 18:36:13 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:51:09 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
+
+int	count_until_n(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+		if (str[i - 1] == '\n')
+			break ;
+	}
+	return (i);
+}
 
 char	*ft_getline(char *save)
 {

@@ -6,14 +6,18 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 18:55:19 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/12 20:58:41 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/17 19:56:54 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10000000
+# endif
 # include <unistd.h>
+# include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
 # include <stdarg.h>
@@ -42,7 +46,7 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strjoin(char *save, char *buf, int r);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -52,14 +56,13 @@ void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
-
-int	    ft_printf(const char *str, ...);
-int	    ft_print_hex(unsigned int num, const char format);
-int	    ft_print_ptr(unsigned long long ptr);
-int	    ft_print_unsigned(unsigned int n);
-int	    ft_printpercent(void);
-int	    ft_printnbr(int n);
-int	    ft_printstr(char *str);
-
+int		ft_printf(const char *str, ...);
+int		ft_print_hex(unsigned int num, const char format);
+int		ft_print_ptr(unsigned long long ptr);
+int		ft_print_unsigned(unsigned int n);
+int		ft_printpercent(void);
+int		ft_printnbr(int n);
+int		ft_printstr(char *str);
+char	*get_next_line(int fd);
 
 #endif
