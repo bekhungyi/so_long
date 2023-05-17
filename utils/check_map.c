@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/18 03:22:19 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/18 03:58:05 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,9 @@ static int read_map(char *filename, int *height, int *length, t_vars *vars)
 		height++;
 	}
 	vars->map = ft_split(line, '\n');
+	ft_printf ("%s", vars->map[1]);
 	write (1, "c", 1);
-	*length = ft_strlen(vars->map[0]);
+	*length = ft_strlen(vars->map[1]);
 	write (1, "a", 1);
 	free (line);
 	close (fd);
@@ -49,8 +50,8 @@ int check_filetype(char *str)
 {
     int len;
     len = ft_strlen (str);
-    str = ft_substr(str, len - 4, len);
-    if (ft_strncmp(str, ".ber", 4) == 0)
+    str = ft_substr (str, len - 4, len);
+    if (ft_strncmp (".ber", str, 4) == 0)
         return (1);
     return (0);
 }
@@ -64,7 +65,7 @@ int check_map(int ac, char **av, t_vars *vars)
     {
         if (!read_map(av[1], &map_l, &map_h, vars))
         {
-			// free(vars);
+			free(vars);
 			vars = NULL;
 			return (0);
 		}
