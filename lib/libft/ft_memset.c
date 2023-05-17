@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/16 18:37:37 by bhung-yi         ###   ########.fr       */
+/*   Created: 2022/08/02 17:27:45 by bhung-yi          #+#    #+#             */
+/*   Updated: 2023/05/15 16:30:11 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	*ft_memset(void *b, int c, size_t len)
 {
-    printf ("ac:%i;\n", ac);
-    printf ("av:%s;\n", av[1]);
-    check_filetype(av[1]);
-    return 0;
+	unsigned char	*i;
+
+	i = (unsigned char *)b;
+	while (len-- > 0)
+		*(i++) = (unsigned char) c;
+	return (b);
 }

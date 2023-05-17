@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/16 18:37:37 by bhung-yi         ###   ########.fr       */
+/*   Created: 2022/08/15 13:36:43 by bhung-yi          #+#    #+#             */
+/*   Updated: 2022/09/15 23:35:11 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-    printf ("ac:%i;\n", ac);
-    printf ("av:%s;\n", av[1]);
-    check_filetype(av[1]);
-    return 0;
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	j = 0;
+	if (ft_strlen(needle) == 0)
+		return ((char *)haystack);
+	while (i < len && haystack[i])
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j]
+			&& haystack[i + j] && needle[j] && i + j < len)
+			j++;
+		if (!needle[j])
+			return ((char *)haystack + i);
+		else
+			i++;
+	}
+	return (0);
 }

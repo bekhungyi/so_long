@@ -1,21 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/16 18:37:37 by bhung-yi         ###   ########.fr       */
+/*   Created: 2022/09/08 12:40:41 by bhung-yi          #+#    #+#             */
+/*   Updated: 2022/09/15 22:36:17 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_atoi(const char *str)
 {
-    printf ("ac:%i;\n", ac);
-    printf ("av:%s;\n", av[1]);
-    check_filetype(av[1]);
-    return 0;
+	int		sign;
+	long	value;
+
+	sign = 1;
+	value = 0;
+	while (*str == 32 || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-')
+		sign = -1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (ft_isdigit(*str))
+	{
+		value = value * 10 + (*str - '0');
+		str++;
+	}
+	return (value * sign);
 }

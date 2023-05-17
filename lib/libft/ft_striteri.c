@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/16 18:37:37 by bhung-yi         ###   ########.fr       */
+/*   Created: 2022/09/04 17:38:24 by bhung-yi          #+#    #+#             */
+/*   Updated: 2022/09/15 23:23:58 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-    printf ("ac:%i;\n", ac);
-    printf ("av:%s;\n", av[1]);
-    check_filetype(av[1]);
-    return 0;
+	unsigned int	i;
+
+	while (s == NULL || f == NULL)
+	{
+		return ;
+	}
+	i = 0;
+	while (s[i])
+	{
+		f(i, &s[i]);
+		i++;
+	}
 }

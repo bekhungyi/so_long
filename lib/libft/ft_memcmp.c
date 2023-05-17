@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/16 18:37:37 by bhung-yi         ###   ########.fr       */
+/*   Created: 2022/08/06 18:15:02 by bhung-yi          #+#    #+#             */
+/*   Updated: 2022/08/15 13:36:11 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int main(int ac, char **av)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-    printf ("ac:%i;\n", ac);
-    printf ("av:%s;\n", av[1]);
-    check_filetype(av[1]);
-    return 0;
+	unsigned char	*ss1;
+	unsigned char	*ss2;
+	size_t			i;
+
+	i = 0;
+	ss1 = (unsigned char *)s1;
+	ss2 = (unsigned char *)s2;
+	if (n == 0)
+		return (0);
+	while (*ss1 == *ss2 && ++i < n)
+	{
+		ss1++;
+		ss2++;
+	}
+	return ((int)(*ss1 - *ss2));
 }
