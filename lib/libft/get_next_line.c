@@ -6,25 +6,11 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 21:01:54 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/17 19:51:09 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/18 01:29:34 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-int	count_until_n(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		i++;
-		if (str[i - 1] == '\n')
-			break ;
-	}
-	return (i);
-}
 
 char	*ft_getline(char *save)
 {
@@ -62,7 +48,7 @@ char	*ft_setnewline(char *save)
 	if (!save || !save[i])
 		return (NULL);
 	i = count_until_n(save);
-	remain = ft_strlen(save) - i;
+	remain = ft_strlen_gnl(save) - i;
 	if (!remain)
 	{
 		free(save);
@@ -89,8 +75,8 @@ char	*ft_readline(int fd, char *save)
 	r = read(fd, buf, BUFFER_SIZE);
 	while (r > 0)
 	{
-		save = ft_strjoin(save, buf, r);
-		if (ft_strchr(save, '\n'))
+		save = ft_strjoin_gnl(save, buf, r);
+		if (ft_strchr_gnl(save, '\n'))
 			break ;
 		r = read(fd, buf, BUFFER_SIZE);
 	}

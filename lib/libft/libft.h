@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 18:55:19 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/17 19:56:54 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/18 01:42:11 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int		ft_atoi(const char *nptr);
 void	*ft_calloc(size_t count, size_t size);
 char	*ft_strdup(const char *s1);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strjoin(char *save, char *buf, int r);
+char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
@@ -64,5 +64,9 @@ int		ft_printpercent(void);
 int		ft_printnbr(int n);
 int		ft_printstr(char *str);
 char	*get_next_line(int fd);
+int		count_until_n(char *str);
+int		ft_strlen_gnl(char *str);
+char	*ft_strjoin_gnl(char *save, char *buf, int r);
+int		ft_strchr_gnl(char *str, char c);
 
 #endif

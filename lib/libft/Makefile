@@ -6,7 +6,7 @@
 #    By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/19 17:28:18 by bhung-yi          #+#    #+#              #
-#    Updated: 2023/05/17 19:53:54 by bhung-yi         ###   ########.fr        #
+#    Updated: 2023/05/18 01:14:19 by bhung-yi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,8 @@ SRCS	= ft_isalpha.c \
 		  ft_print_misc.c \
 		  ft_print_ptr.c \
 		  ft_print_unsigned.c \
-		  get_next_line.c
+		  get_next_line.c \
+		  get_next_line_utils.c
 
 OBJS	= ${SRCS:.c=.o}
 
