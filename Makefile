@@ -6,7 +6,7 @@
 #    By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 22:30:52 by bhung-yi          #+#    #+#              #
-#    Updated: 2023/05/15 16:36:42 by bhung-yi         ###   ########.fr        #
+#    Updated: 2023/05/18 01:47:03 by bhung-yi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ CC			= gcc
 FLAGS		= -Wall -Werror -Wextra
 RM			= /bin/rm -f
 
-LIBFTPATH	= ./lib/libft
+LIBFTPATH	= ./libft
 LIBFTNAME	= libft.a
 
 MLX_DIR		= mlx

@@ -6,18 +6,20 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 17:22:58 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/18 01:37:12 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/18 03:13:28 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+int	ft_strlen(const char *s)
 {
-	int	i;
+	int	count;
 
-	i = 0;
-	while (s[i])
-		i++;
-	return (i);
+	count = 0;
+	while (s[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
 }

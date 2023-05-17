@@ -6,88 +6,67 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 17:37:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2022/09/15 23:21:07 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/18 02:56:10 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	wordcount(char const *s, char c)
+static	size_t	countwords(char const *s, char c)
 {
-	size_t	count;
 	size_t	i;
+	size_t	count;
 
-	count = 0;
 	i = 0;
-	while (s[i])
+	count = 0;
+	while (s[i] != '\0')
 	{
-		if ((s[i] == c && s[i + 1] != '\0' && s[i + 1] != c))
+		while (s[i] == c)
+			i++;
+		if (s[i] != 0)
 			count++;
-		else if (s[i] != c && i == 0)
-			count++;
-		i++;
+		while (s[i] != c && s[i])
+			i++;
 	}
 	return (count);
 }
 
-static char	**free_lst(char **lst)
+static char	**setup(char const *s, char c)
 {
-	size_t	i;
+	char	**split;
 
-	i = 0;
-	while (lst[i])
-	{
-		free(lst[i]);
-		i++;
-	}
-	free(lst);
-	return (NULL);
-}
-
-static char	*ft_strndup(const char *s1, size_t n)
-{
-	char	*str;
-	size_t	i;
-
-	str = malloc(sizeof(char) * (n + 1));
-	if (str == NULL)
-		return (NULL);
-	i = 0;
-	while (s1[i] && n)
-	{
-		str[i] = s1[i];
-		i++;
-		n--;
-	}
-	str[i] = '\0';
-	return (str);
+	if (!s)
+		return (0);
+	split = (char **)malloc((countwords(s, c) + 1) * sizeof(char *));
+	if (!split)
+		return (0);
+	return (split);
 }
 
 char	**ft_split(char const *s, char c)
 {
+	char	**split;
 	size_t	start;
 	size_t	end;
 	size_t	i;
-	char	**lst;
 
-	if (s == NULL)
-		return (NULL);
-	lst = malloc(sizeof(char *) * (wordcount(s, c) + 1));
-	if (lst == NULL)
-		return (NULL);
+	split = setup(s, c);
+	if (!split)
+		return (0);
+	start = 0;
 	end = 0;
 	i = 0;
-	while (i < (wordcount(s, c)))
+	while (i < countwords(s, c))
 	{
-		while (s[end] == c)
+		while (s[start] == c)
+			start++;
+		end = start;
+		while (s[end] != c && s[end])
 			end++;
+		split[i] = ft_substr(s, start, end - start);
 		start = end;
-		while (s[end] != c && s[end] != '\0')
-			end++;
-		lst[i] = ft_strndup(s + start, end - start);
-		if (lst[i++] == NULL)
-			return (free_lst(lst));
+		i++;
 	}
-	lst[i] = NULL;
-	return (lst);
+	split[i] = 0;
+	return (split);
 }
