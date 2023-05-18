@@ -6,30 +6,26 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/18 03:58:05 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:17:02 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int read_map(char *filename, int *height, int *length, t_vars *vars)
+int read_map(char *filename, int *height, int *length, t_vars *vars)
 {
     int		fd;
     char	*line;
 	char	*buffer;
 
 	height = 0;
-	length = 0;
+	*length = 0;
     fd = open (filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
-	// buffer = get_next_line(fd);
-	// *length = ft_strlen(buffer);
-	// free(buffer);
 	while (1)
 	{
 		buffer = get_next_line(fd);
-		ft_printf("%s", buffer);
 		if (buffer == NULL)
 			break;
 		line = ft_strjoin(line, buffer);
@@ -37,10 +33,7 @@ static int read_map(char *filename, int *height, int *length, t_vars *vars)
 		height++;
 	}
 	vars->map = ft_split(line, '\n');
-	ft_printf ("%s", vars->map[1]);
-	write (1, "c", 1);
 	*length = ft_strlen(vars->map[1]);
-	write (1, "a", 1);
 	free (line);
 	close (fd);
     return (1);
@@ -52,18 +45,21 @@ int check_filetype(char *str)
     len = ft_strlen (str);
     str = ft_substr (str, len - 4, len);
     if (ft_strncmp (".ber", str, 4) == 0)
-        return (1);
+	{
+		// free(str);
+		return (1);
+	}
     return (0);
 }
 
 int check_map(int ac, char **av, t_vars *vars)
 {
-	int	map_l;
 	int	map_h;
+	int	map_l;
 
     if (ac == 2 && check_filetype(av[1]) == 1)
     {
-        if (!read_map(av[1], &map_l, &map_h, vars))
+        if (!read_map(av[1], &map_h, &map_l, vars))
         {
 			free(vars);
 			vars = NULL;
@@ -71,8 +67,8 @@ int check_map(int ac, char **av, t_vars *vars)
 		}
 		vars->map_height = map_h;
 		vars->map_length = map_l;
-		// if (check_map(vars))
-		return (1);
+		if (!check_tiles(vars))
+			return (1);
     }
     return (0);
 }

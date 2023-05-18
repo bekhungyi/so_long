@@ -6,7 +6,7 @@
 #    By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 22:30:52 by bhung-yi          #+#    #+#              #
-#    Updated: 2023/05/18 01:47:03 by bhung-yi         ###   ########.fr        #
+#    Updated: 2023/05/19 01:10:50 by bhung-yi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ MLX_FLAGS	= 	-L$(MLX_DIR) -lmlx \
 				-framework OpenGL \
 				-framework AppKit
 
-UTILS		= ./utils/check_map.c
+UTILS		= 	./utils/check_map.c \
+				./utils/check_tiles.c
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@

@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:17:57 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/18 02:43:27 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/19 01:10:26 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int check_filetype(char *str);
 
 int check_map(int ac, char **av, t_vars *vars);
 
+int check_tiles(t_vars *vars);
 
 
 # define COLOR_RED		0xFF0000
