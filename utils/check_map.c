@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 01:00:40 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/21 18:59:44 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/22 00:57:01 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,26 @@ int	check_items(t_vars *vars)
 	return (1);
 }
 
+int	check_extra(t_vars *vars)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (x < vars->map_height)
+	{
+		y = 0;
+		while (y < vars->map_length)
+		{
+			if (vars->map[x][y] != '0' && vars->map[x][y] != '1' && vars->map[x][y] != 'P' && vars->map[x][y] != 'E' && vars->map[x][y] != 'C')
+				return (0);
+			y++;
+		}
+		x++;
+	}
+	return (1);
+}
+
 int check_map(t_vars *vars)
 {
     if (check_len(vars) == 0)
@@ -97,6 +117,8 @@ int check_map(t_vars *vars)
     else if (check_walls(vars) == 0)
         return (0);
 	else if (check_items(vars) == 0)
+		return (0);
+	else if (check_extra(vars) == 0)
 		return (0);
 	else if (check_valid_path(vars) == 0)
 		return (0);
