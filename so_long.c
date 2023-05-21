@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/18 02:51:14 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:48:28 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int main(int ac, char **av)
         ft_printf("Game is rendered.");
     }
     else
-        ft_printf("Error.Map is invalid or not found.");
+        ft_printf("Error: Map is invalid or not found.");
     return 0;
 }

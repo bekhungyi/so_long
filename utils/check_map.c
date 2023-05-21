@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/19 01:17:02 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/21 16:29:38 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int read_map(char *filename, int *height, int *length, t_vars *vars)
     fd = open (filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
+	line = "";
 	while (1)
 	{
 		buffer = get_next_line(fd);
@@ -41,10 +42,12 @@ int read_map(char *filename, int *height, int *length, t_vars *vars)
 
 int check_filetype(char *str)
 {
-    int len;
+    int 	len;
+	char	*filetype;
+	
     len = ft_strlen (str);
-    str = ft_substr (str, len - 4, len);
-    if (ft_strncmp (".ber", str, 4) == 0)
+    filetype = &str[(len - 4)];
+    if (ft_strncmp (filetype, ".ber", 4) == 0)
 	{
 		// free(str);
 		return (1);
@@ -67,8 +70,11 @@ int check_map(int ac, char **av, t_vars *vars)
 		}
 		vars->map_height = map_h;
 		vars->map_length = map_l;
-		if (!check_tiles(vars))
+		if (check_tiles(vars))
+		{
+			ft_printf ("Pass check tiles.\n");
 			return (1);
+		}
     }
     return (0);
 }

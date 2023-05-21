@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:17:57 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/19 01:10:26 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/21 15:44:52 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ typedef struct	s_vars {
 	int		map_height;
 	int		map_length;
 	char	**map;
+	int		rows;
 }				t_vars;
 
 
