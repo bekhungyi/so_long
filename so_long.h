@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:17:57 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/21 15:44:52 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/21 19:02:55 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ typedef struct	s_vars {
 
 int check_filetype(char *str);
 
-int check_map(int ac, char **av, t_vars *vars);
+int check_file(int ac, char **av, t_vars *vars);
 
-int check_tiles(t_vars *vars);
+int check_map(t_vars *vars);
 
+int check_valid_path(t_vars *vars);
 
 # define COLOR_RED		0xFF0000
 # define COLOR_YELLOW	0xFFFF00

@@ -5,76 +5,100 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/21 16:29:38 by bhung-yi         ###   ########.fr       */
+/*   Created: 2023/05/19 01:00:40 by bhung-yi          #+#    #+#             */
+/*   Updated: 2023/05/21 18:59:44 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int read_map(char *filename, int *height, int *length, t_vars *vars)
+int check_len(t_vars *vars)
 {
-    int		fd;
-    char	*line;
-	char	*buffer;
-
-	height = 0;
-	*length = 0;
-    fd = open (filename, O_RDONLY);
-	if (fd < 0)
-		return (0);
-	line = "";
-	while (1)
-	{
-		buffer = get_next_line(fd);
-		if (buffer == NULL)
-			break;
-		line = ft_strjoin(line, buffer);
-		free(buffer);
-		height++;
-	}
-	vars->map = ft_split(line, '\n');
-	*length = ft_strlen(vars->map[1]);
-	free (line);
-	close (fd);
+    int     i;
+    int     len;
+    
+    i = 0;
+    len = ft_strlen(vars->map[i]);
+    while(vars->map[++i])
+    {
+        if (len != ft_strlen(vars->map[i]))
+            return (0);
+    }
+    vars->map_height = i;
+	vars->map_length = len;
     return (1);
 }
 
-int check_filetype(char *str)
+int check_walls(t_vars *vars)
 {
-    int 	len;
-	char	*filetype;
-	
-    len = ft_strlen (str);
-    filetype = &str[(len - 4)];
-    if (ft_strncmp (filetype, ".ber", 4) == 0)
+    int		i;
+    int		r_side;
+    char	*buffer_top;
+	char	*buffer_bottom;
+
+	i = vars->map_height;
+	buffer_top = vars->map[0];
+	buffer_bottom = vars->map[--i];
+	r_side = ft_strlen(vars->map[0]) - 1;
+	i = -1;
+	while (++i < r_side)
 	{
-		// free(str);
-		return (1);
+		if (buffer_top[i] != '1' || buffer_bottom[i] != '1')
+			return (0);
 	}
-    return (0);
+	i = 0;
+	while (++i < vars->map_height)
+	{
+		buffer_top = vars->map[i];
+		{
+			if (buffer_top[0] != '1' || buffer_top[r_side] != '1')
+				return (0);
+		}
+	}
+    return (1);
 }
 
-int check_map(int ac, char **av, t_vars *vars)
+int	check_items(t_vars *vars)
 {
-	int	map_h;
-	int	map_l;
+	int		p;
+	int		e;
+	int		c;
+	int		i;
+	int		j;
+	char	*buffer;
 
-    if (ac == 2 && check_filetype(av[1]) == 1)
-    {
-        if (!read_map(av[1], &map_h, &map_l, vars))
-        {
-			free(vars);
-			vars = NULL;
-			return (0);
-		}
-		vars->map_height = map_h;
-		vars->map_length = map_l;
-		if (check_tiles(vars))
+	p = 0;
+	e = 0;
+	c = 0;
+	i = 0;
+	while (++i < vars->map_height)
+	{
+		buffer = vars->map[i];
+		j = 0;
+		while (buffer[j++] && j < vars->map_length)
 		{
-			ft_printf ("Pass check tiles.\n");
-			return (1);
+			if (buffer[j] == 'P')
+				p++;
+			else if (buffer[j] == 'E')
+				e++;
+			else if (buffer[j] == 'C')
+				c++;
 		}
-    }
-    return (0);
+	}
+	if (p != 1 || e != 1 || c < 1)
+		return (0);
+	return (1);
+}
+
+int check_map(t_vars *vars)
+{
+    if (check_len(vars) == 0)
+        return (0);
+    else if (check_walls(vars) == 0)
+        return (0);
+	else if (check_items(vars) == 0)
+		return (0);
+	else if (check_valid_path(vars) == 0)
+		return (0);
+    return (1);
 }
