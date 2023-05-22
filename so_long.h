@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:17:57 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 19:21:55 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 03:17:31 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_vars
 	void	*collectibles;
 	void	*space;
 	void	*bg;
+	int 	steps;
 }			t_vars;
 
 int		check_filetype(char *str);
@@ -58,8 +59,8 @@ int		check_valid_path(t_vars *vars);
 int		walk_player(char **map, int x, int y, t_vars *vars);
 
 // void	win_init(t_vars *vars);
-void	game_init(t_vars *vars);
+void	render(t_vars *vars);
 
-int		map_draw(t_vars	*vars);
+void	map_draw(t_vars	*vars);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 19:22:00 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 00:45:31 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(int ac, char **av)
 
 	if (check_file(ac, av, &vars))
 	{
-		ft_printf("Game is rendered.");
-		game_init(&vars);
+		ft_printf ("Game is rendered.");
+		render (&vars);
 		mlx_loop(vars.mlx);
 	}
 	else
