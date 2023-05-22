@@ -6,7 +6,7 @@
 #    By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 22:30:52 by bhung-yi          #+#    #+#              #
-#    Updated: 2023/05/22 02:37:31 by bhung-yi         ###   ########.fr        #
+#    Updated: 2023/05/22 14:27:25 by bhung-yi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,10 +23,11 @@ MLX_FLAGS	= 	-L$(MLX_DIR) -lmlx \
 				-framework OpenGL \
 				-framework AppKit
 
-UTILS		= 	./checkers/check_file.c \
-				./checkers/check_map.c \
-				./checkers/check_path.c \
-				./checkers/dfs.c
+INCLUDES	= 	./includes/check_file.c \
+				./includes/check_map.c \
+				./includes/check_path.c \
+				./includes/dfs.c \
+				./includes/render.c
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
@@ -36,7 +37,7 @@ all: $(NAME)
 $(NAME):
 	make -C $(LIBFTPATH)
 	mv $(LIBFTPATH)/$(LIBFTNAME) $(LIBFTNAME)
-	$(CC) $(CFLAGS) so_long.c $(LIBFTNAME) $(UTILS) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) so_long.c $(LIBFTNAME) $(INCLUDES) $(MLX_FLAGS) -o $(NAME)
 
 re: fclean all
 
