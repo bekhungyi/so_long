@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 17:00:23 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 19:05:44 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/22 23:02:12 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 void	img_draw(t_vars *vars, void *image, int x, int y)
 {
 	mlx_put_image_to_window
-		(vars->mlx, vars->win, image, x * 32, y *32 + 32);
+		(vars->mlx, vars->win, image, x * 32, y *32);
 }
 
 // sets the player pos and then img_draw

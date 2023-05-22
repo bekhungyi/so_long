@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:28:08 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 19:30:32 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/22 23:02:27 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,19 +71,19 @@
 
 static void	img_init(t_vars *vars)
 {
-	vars->bg = mlx_xpm_file_to_image (vars->mlx, "./assets/bg.xpm", &vars->img_l, &vars->img_h);
+	vars->bg = mlx_xpm_file_to_image (vars->mlx, "./assets/space.xpm", &vars->img_l, &vars->img_h);
     if (vars->bg == NULL)
         ft_printf("No xpm.\n");
-	vars->wall = mlx_xpm_file_to_image (vars->mlx, "./assets/1.xpm", &vars->img_l, &vars->img_h);
+	vars->wall = mlx_xpm_file_to_image (vars->mlx, "./assets/wall.xpm", &vars->img_l, &vars->img_h);
     if (vars->wall == NULL)
         ft_printf("No xpm.\n");
-	vars->player = mlx_xpm_file_to_image (vars->mlx, "./assets/1.xpm", &vars->img_l, &vars->img_h);
+	vars->player = mlx_xpm_file_to_image (vars->mlx, "./assets/player.xpm", &vars->img_l, &vars->img_h);
     if (vars->player == NULL)
         ft_printf("No xpm.\n");
-	vars->collectibles = mlx_xpm_file_to_image (vars->mlx, "./assets/1.xpm", &vars->img_l, &vars->img_h);
+	vars->collectibles = mlx_xpm_file_to_image (vars->mlx, "./assets/collect.xpm", &vars->img_l, &vars->img_h);
     if (vars->collectibles == NULL)
         ft_printf("No xpm.\n");
-	vars->exit = mlx_xpm_file_to_image (vars->mlx, "./assets/1.xpm", &vars->img_l, &vars->img_h);
+	vars->exit = mlx_xpm_file_to_image (vars->mlx, "./assets/exit.xpm", &vars->img_l, &vars->img_h);
     if (vars->exit == NULL)
         ft_printf("No xpm.\n");
 }
@@ -96,7 +96,7 @@ static void	size_window_init(t_vars *vars)
 	i = 0;
 	while (vars->map[i] != NULL)
 		i++;
-	vars->map_height = i * 32 + 32;
+	vars->map_height = i * 32;
 }
 
 void	game_init(t_vars *vars)
