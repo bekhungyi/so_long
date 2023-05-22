@@ -6,15 +6,15 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 18:55:19 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/18 03:13:54 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:23:52 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 10000000
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10000000
 # endif
 # include <unistd.h>
 # include <fcntl.h>
@@ -27,7 +27,7 @@ int		ft_isdigit(int i);
 int		ft_isalnum(int i);
 int		ft_isascii(int c);
 int		ft_isprint(int c);
-int     ft_strlen(const char *s);
+int		ft_strlen(const char *s);
 void	*ft_memset(void *b, int c, size_t len);
 void	ft_bzero(void *s, size_t n);
 void	*ft_memcpy(void *dst, const void *src, size_t n);

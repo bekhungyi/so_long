@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:17:57 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 02:09:11 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/22 19:21:55 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,36 +17,49 @@
 #  define BUFFER_SIZE 10000000
 # endif
 
-#include "mlx/mlx.h"
-#include "./libft/libft.h"
-#include <unistd.h>
-#include <fcntl.h>
+# include "./libft/libft.h"
+# include "./mlx/mlx.h"
+# include <fcntl.h>
+# include <unistd.h>
 
-typedef struct	s_vars {
+typedef struct s_vars
+{
 	void	*mlx;
 	void	*win;
+	void	*img;
 	int		map_height;
 	int		map_length;
 	char	**map;
 	int		rows;
 	int		x;
 	int		y;
-}				t_vars;
+	int		p_count;
+	int		e_count;
+	int		c_count;
+	int		window_closed;
+	int		img_l;
+	int		img_h;
+	void	*wall;
+	void	*player;
+	void	*exit;
+	void	*collectibles;
+	void	*space;
+	void	*bg;
+}			t_vars;
 
+int		check_filetype(char *str);
 
-int check_filetype(char *str);
+int		check_file(int ac, char **av, t_vars *vars);
 
-int check_file(int ac, char **av, t_vars *vars);
+int		check_map(t_vars *vars);
 
-int check_map(t_vars *vars);
+int		check_valid_path(t_vars *vars);
 
-int check_valid_path(t_vars *vars);
+int		walk_player(char **map, int x, int y, t_vars *vars);
 
-int	walk_player(char **map, int x, int y, t_vars *vars);
+// void	win_init(t_vars *vars);
+void	game_init(t_vars *vars);
 
-# define COLOR_RED		0xFF0000
-# define COLOR_YELLOW	0xFFFF00
-# define COLOR_BLACK	0x000000
+int		map_draw(t_vars	*vars);
 
-
-# endif
+#endif

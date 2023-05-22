@@ -6,21 +6,21 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 02:25:36 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/22 15:13:19 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-int read_map(char *filename, int *height, int *length, t_vars *vars)
+int	read_map(char *filename, int *height, int *length, t_vars *vars)
 {
-    int		fd;
-    char	*line;
+	int		fd;
+	char	*line;
 	char	*buffer;
 
 	height = 0;
 	*length = 0;
-    fd = open (filename, O_RDONLY);
+	fd = open (filename, O_RDONLY);
 	if (fd < 0)
 		return (0);
 	line = "";
@@ -28,7 +28,7 @@ int read_map(char *filename, int *height, int *length, t_vars *vars)
 	{
 		buffer = get_next_line(fd);
 		if (buffer == NULL)
-			break;
+			break ;
 		line = ft_strjoin(line, buffer);
 		free(buffer);
 		height++;
@@ -37,33 +37,30 @@ int read_map(char *filename, int *height, int *length, t_vars *vars)
 	*length = ft_strlen(vars->map[1]);
 	free (line);
 	close (fd);
-    return (1);
+	return (1);
 }
 
-int check_filetype(char *str)
+int	check_filetype(char *str)
 {
-    int 	len;
+	int		len;
 	char	*filetype;
-	
-    len = ft_strlen (str);
-    filetype = &str[(len - 4)];
-    if (ft_strncmp (filetype, ".ber", 4) == 0)
-	{
-		// free(str);
+
+	len = ft_strlen (str);
+	filetype = &str[(len - 4)];
+	if (ft_strncmp (filetype, ".ber", 4) == 0)
 		return (1);
-	}
-    return (0);
+	return (0);
 }
 
-int check_file(int ac, char **av, t_vars *vars)
+int	check_file(int ac, char **av, t_vars *vars)
 {
 	int	map_h;
 	int	map_l;
 
-    if (ac == 2 && check_filetype(av[1]) == 1)
-    {
-        if (!read_map(av[1], &map_h, &map_l, vars))
-        {
+	if (ac == 2 && check_filetype(av[1]) == 1)
+	{
+		if (!read_map(av[1], &map_h, &map_l, vars))
+		{
 			free(vars);
 			vars = NULL;
 			return (0);
@@ -73,6 +70,6 @@ int check_file(int ac, char **av, t_vars *vars)
 		if (!check_map(vars))
 			return (0);
 		ft_printf ("Pass check map.\n");
-    }
-    return (1);
+	}
+	return (1);
 }

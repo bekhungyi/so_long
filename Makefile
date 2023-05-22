@@ -6,7 +6,7 @@
 #    By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 22:30:52 by bhung-yi          #+#    #+#              #
-#    Updated: 2023/05/22 14:27:25 by bhung-yi         ###   ########.fr        #
+#    Updated: 2023/05/22 19:22:19 by bhung-yi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,8 @@ INCLUDES	= 	./includes/check_file.c \
 				./includes/check_map.c \
 				./includes/check_path.c \
 				./includes/dfs.c \
-				./includes/render.c
+				./includes/render.c \
+				./includes/draw_frame.c
 
 %.o: %.c
 	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
