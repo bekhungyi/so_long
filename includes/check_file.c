@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 21:28:15 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/24 02:36:29 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,7 @@ int	check_file(int ac, char **av, t_vars *vars)
 	{
 		if (!read_map(av[1], &map_h, &map_l, vars))
 		{
-			free(vars);
-			vars = NULL;
+			ft_printf("File %s not found.\n", av[1]);
 			return (0);
 		}
 		vars->map_height = map_h;

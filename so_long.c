@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 21:35:01 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/24 02:31:15 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	main(int ac, char **av)
 {
 	t_vars	vars;
 
+	vars.p_count = 0;
+	vars.e_count = 0;
 	if (ac == 2 && check_file(ac, av, &vars))
 	{
 		render (&vars);
