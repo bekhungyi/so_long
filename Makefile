@@ -6,7 +6,7 @@
 #    By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/09 22:30:52 by bhung-yi          #+#    #+#              #
-#    Updated: 2023/05/23 16:49:54 by bhung-yi         ###   ########.fr        #
+#    Updated: 2023/05/23 18:52:19 by bhung-yi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ all: $(NAME)
 $(NAME):
 	make -C $(LIBFTPATH)
 	mv $(LIBFTPATH)/$(LIBFTNAME) $(LIBFTNAME)
-	$(CC) $(CFLAGS) so_long.c $(LIBFTNAME) $(INCLUDES) $(MLX_FLAGS) -o $(NAME)
+	$(CC) $(CFLAGS) so_long.c $(LIBFTNAME) $(INCLUDES) $(MLX_FLAGS) -o $(NAME) -fsanitize=address
 
 re: fclean all
 

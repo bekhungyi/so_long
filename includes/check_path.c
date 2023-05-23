@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 18:52:20 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 14:48:58 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 17:33:42 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,9 @@ int	check_valid_path(t_vars *vars)
 	y = vars->y;
 	if (path_algo(map_clone, x, y, vars) == 0)
 	{
-		ft_printf ("No path.\n");
+		ft_printf ("No valid path.\n");
 		return (0);
 	}
-	ft_printf ("Got path.\n");
 	free_map_clone (map_clone, vars);
 	return (1);
 }

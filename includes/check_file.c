@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 15:13:19 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:54:48 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ int	check_filetype(char *str)
 	filetype = &str[(len - 4)];
 	if (ft_strncmp (filetype, ".ber", 4) == 0)
 		return (1);
+	ft_printf("not .ber");
 	return (0);
 }
 
@@ -69,7 +70,7 @@ int	check_file(int ac, char **av, t_vars *vars)
 		vars->map_length = map_l;
 		if (!check_map(vars))
 			return (0);
-		ft_printf ("Pass check map.\n");
+		return (1);
 	}
-	return (1);
+	return (0);
 }

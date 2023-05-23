@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:16:50 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 00:45:31 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:44:24 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,12 @@ int	main(int ac, char **av)
 {
 	t_vars	vars;
 
-	if (check_file(ac, av, &vars))
+	if (ac == 2 && check_file(ac, av, &vars))
 	{
-		ft_printf ("Game is rendered.");
 		render (&vars);
 		mlx_loop(vars.mlx);
 	}
 	else
-		ft_printf("Error: Map is invalid or not found.");
+		ft_printf("Error.\nMap is invalid or not found.");
 	return (0);
 }
