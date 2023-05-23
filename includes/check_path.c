@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 18:52:20 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/22 14:51:52 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 14:48:58 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	check_valid_path(t_vars *vars)
 	find_player(vars);
 	x = vars->x;
 	y = vars->y;
-	if (walk_player(map_clone, x, y, vars) == 0)
+	if (path_algo(map_clone, x, y, vars) == 0)
 	{
 		ft_printf ("No path.\n");
 		return (0);
