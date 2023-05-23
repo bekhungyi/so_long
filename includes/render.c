@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/22 14:28:08 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 17:03:43 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:01:50 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	render_px(t_vars *vars)
 void	render(t_vars *vars)
 {
 	vars->steps = 0;
+	vars->total_collected = 0;
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window
 		(vars->mlx, vars->map_length * 32, vars->map_height * 32, "so_long");

@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 18:54:48 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 18:59:24 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ int	check_file(int ac, char **av, t_vars *vars)
 		vars->map_length = map_l;
 		if (!check_map(vars))
 			return (0);
-		return (1);
 	}
-	return (0);
+	return (1);
 }
