@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 19:48:42 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 18:59:24 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:17:28 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,13 @@ int	check_filetype(char *str)
 
 	len = ft_strlen (str);
 	filetype = &str[(len - 4)];
-	if (ft_strncmp (filetype, ".ber", 4) == 0)
-		return (1);
-	ft_printf("not .ber");
-	return (0);
+	if (ft_strncmp (filetype, ".ber", 4) != 0)
+	{
+		ft_printf("Invalid \".ber\" file.");
+		exit(0);
+		return (0);
+	}
+	return (1);
 }
 
 int	check_file(int ac, char **av, t_vars *vars)
