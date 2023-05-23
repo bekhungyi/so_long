@@ -6,7 +6,7 @@
 /*   By: bhung-yi <bhung-yi@student.42kl.edu.my>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 15:17:57 by bhung-yi          #+#    #+#             */
-/*   Updated: 2023/05/23 17:05:43 by bhung-yi         ###   ########.fr       */
+/*   Updated: 2023/05/23 21:20:11 by bhung-yi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void	map_draw(t_vars	*vars);
 void	event(t_vars *vars);
 
 int		exit_game(void *param);
+
+void	extra_pe(t_vars *vars);
 
 #endif
